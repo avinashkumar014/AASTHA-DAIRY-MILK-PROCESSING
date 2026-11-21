@@ -1,0 +1,32 @@
+import { Link } from 'react-router-dom'
+import { ArrowRight, BadgeCheck, Droplets, Factory, HeartHandshake, ShieldCheck, Sparkles, Truck } from 'lucide-react'
+import Hero from '../components/sections/Hero'
+import CTASection from '../components/sections/CTASection'
+import ScrollReveal from '../components/animations/ScrollReveal'
+import ProductCard from '../components/products/ProductCard'
+import SEO from '../components/common/SEO'
+import { products } from '../data/products'
+import { images } from '../data/images'
+
+export default function Home() {
+  return (
+    <>
+      <SEO title="AASTHA DAIRY & MILK PROCESSING | Pure Dairy Excellence" description="Discover premium dairy products and a quality-focused approach to milk processing at AASTHA DAIRY & MILK PROCESSING." />
+      <Hero />
+      <section id="introduction" className="section-pad"><div className="container-shell grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]"><ScrollReveal><p className="eyebrow">About AASTHA DAIRY & MILK PROCESSING</p><h2 className="text-4xl leading-tight text-forest md:text-6xl">Welcome to AASTHA DAIRY & MILK PROCESSING</h2><p className="mt-6 max-w-xl text-base leading-8 text-ink/65">AASTHA DAIRY & MILK PROCESSING is committed to serving fresh dairy products through responsible handling and quality-focused operations. We aim to build lasting trust with households and business partners through dependable supply and genuine care.</p><Link to="/about" className="btn-green mt-8">Discover Our Story <ArrowRight size={17} /></Link></ScrollReveal><ScrollReveal delay={0.12} className="relative"><div className="h-[520px] overflow-hidden"><img src={images.about} alt="Fresh dairy cattle and natural dairy environment" loading="lazy" className="image-cover" /></div><div className="absolute -bottom-6 -left-3 max-w-[220px] bg-gold p-6 text-forest md:-left-8"><Droplets className="mb-5" /><p className="font-heading text-2xl">Freshness at every stage</p></div></ScrollReveal></div></section>
+
+      <section className="section-pad bg-sage"><div className="container-shell"><ScrollReveal className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="eyebrow">Our Range</p><h2 className="text-4xl text-forest md:text-6xl">Featured Dairy Products</h2></div><Link to="/products" className="flex items-center gap-2 text-sm font-bold text-forest">View full catalogue <ArrowRight size={16} /></Link></ScrollReveal><div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{products.slice(0, 6).map((product, index) => <ScrollReveal key={product.id} delay={index * 0.05}><ProductCard product={product} /></ScrollReveal>)}</div></div></section>
+
+      <section className="section-pad"><div className="container-shell"><ScrollReveal className="mx-auto mb-12 max-w-2xl text-center"><p className="eyebrow">Why Choose Us</p><h2 className="text-4xl text-forest md:text-6xl">Care, quality and reliability</h2></ScrollReveal><div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">{[
+        [ShieldCheck,'Quality-focused operations'],[Sparkles,'Hygiene & cleanliness'],[Truck,'Reliable supply'],[HeartHandshake,'Customer commitment'],[Factory,'Professional processing']
+      ].map(([Icon,label],index) => <ScrollReveal key={label} delay={index * 0.06}><div className="h-full border border-forest/10 bg-white p-7 transition duration-300 hover:-translate-y-2 hover:shadow-card"><Icon className="mb-8 text-leaf" size={32} /><h3 className="text-xl text-forest">{label}</h3></div></ScrollReveal>)}</div></div></section>
+
+      <section className="section-pad bg-forest text-white"><div className="container-shell grid items-center gap-12 lg:grid-cols-2"><ScrollReveal className="h-[560px] overflow-hidden"><img src={images.processing} alt="Modern dairy processing and quality operations" loading="lazy" className="image-cover" /></ScrollReveal><ScrollReveal delay={0.1}><p className="eyebrow text-gold">Processing & Quality</p><h2 className="text-4xl md:text-6xl">Committed to quality at every step</h2><p className="mt-6 text-base leading-8 text-white/70">Our processing approach brings attention to careful handling, quality checks and hygienic practices throughout the dairy journey.</p><div className="mt-8 grid gap-4 sm:grid-cols-2">{['Careful milk handling','Quality testing practices','Hygiene and sanitation','Packaging and storage'].map((item) => <div key={item} className="flex items-center gap-3 text-sm"><BadgeCheck className="text-gold" size={18} />{item}</div>)}</div><Link to="/processing-quality" className="btn-primary mt-9">Learn More <ArrowRight size={17} /></Link></ScrollReveal></div></section>
+
+      <section className="section-pad"><div className="container-shell"><ScrollReveal className="mb-10"><p className="eyebrow">Our Dairy Farm</p><h2 className="max-w-3xl text-4xl text-forest md:text-6xl">A glimpse of life at our farm</h2></ScrollReveal><div className="grid h-[520px] gap-4 md:grid-cols-12"><ScrollReveal className="h-full overflow-hidden rounded-sm md:col-span-7"><img src={images.farmPhotos[3].src} alt={images.farmPhotos[3].alt} loading="lazy" className="image-cover transition duration-700 hover:scale-[1.03]" /></ScrollReveal><div className="grid gap-4 md:col-span-5"><ScrollReveal className="h-full overflow-hidden rounded-sm"><img src={images.farmPhotos[1].src} alt={images.farmPhotos[1].alt} loading="lazy" className="image-cover transition duration-700 hover:scale-[1.03]" /></ScrollReveal><ScrollReveal className="h-full overflow-hidden rounded-sm"><img src={images.farmPhotos[5].src} alt={images.farmPhotos[5].alt} loading="lazy" className="image-cover transition duration-700 hover:scale-[1.03]" /></ScrollReveal></div></div><div className="mt-7"><Link to="/infrastructure" className="btn-green">View Farm Gallery <ArrowRight size={17} /></Link></div></div></section>
+
+      <section className="bg-sage py-20"><div className="container-shell grid items-center gap-10 rounded-sm md:grid-cols-[1fr_auto]"><ScrollReveal><p className="eyebrow">Business Partnership</p><h2 className="text-4xl text-forest md:text-6xl">Grow With AASTHA DAIRY & MILK PROCESSING</h2><p className="mt-5 max-w-2xl leading-7 text-ink/65">Let's build strong business relationships through reliable dairy supply and partnership opportunities.</p></ScrollReveal><Link to="/contact" className="btn-green whitespace-nowrap">Distributor Enquiry <ArrowRight size={17} /></Link></div></section>
+      <CTASection />
+    </>
+  )
+}
